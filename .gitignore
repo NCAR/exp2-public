@@ -1,0 +1,15 @@
+# Ignore python bytecode files
+*.pyc
+*.egg-info
+
+# Ignore emacs backup files
+*~
+
+# Ignore .ORIG files
+*.ORIG
+
+# Ignore python egg-info files
+*.egg-info/
+
+# Ignore toss subdirs
+toss
