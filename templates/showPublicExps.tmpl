@@ -141,12 +141,10 @@
             </div>
 
             <div class="callout-block callout-danger">
-              <div class="icon-holder">
-                <i class="fa fa-exclamation-triangle"></i>
-              </div>
               <div class="content">
-                <h4 class="callout-title">Important</h4>
-                <p>You should use the most recent version of the
+                <h4 class="callout-title"><i class="fa fa-exclamation-triangle"></i> Important</h4>
+                <p>You should use the most recent supported version 
+		  (<a href="http://www.cesm.ucar.edu/models/cesm2/release_download.html">release-cesm2.1.1</a>) of the
                   model that is available unless you are trying to replicate
                   previous results or create a branch run from a previous
                   experiment. </p>
@@ -158,8 +156,7 @@
               the target resolution, followed by scientific review of
               the model output diagnostics. All scientifically
               supported component sets are also accompanied
-              by <a href="http://www.cesm.ucar.edu/experiments/">diagnostic
-		and model output data.</a></p>
+              by diagnostic and model output data.</p>
 
             <p>Component sets and resolutions are backward
               compatible with all CESM releases. However,
@@ -208,7 +205,7 @@
 		  <td>[% exp.casename %]</td>
 		  <td>[% exp.ensemble_size %]</td>
 		  <td>[% exp.expType_desc %]</td>
-		  <td>[% exp.model_version %]</td>
+		  <td><a href="https://github.com/ESCOMP/cesm/releases/tag/[% exp.model_version %]">[% exp.model_version %]</a></td>
 		  <td style="white-space:normal;">[% exp.title %]</td>
 
 		  <!-- Dataset access -->
@@ -244,7 +241,10 @@
                         </tr>
                         <tr>
                           <th id="details">Caseroot files</th>
+			  <!--
                           <td><a href="https://svn-cesm2-expdb.cgd.ucar.edu/public/[% exp.casename %]" target="_blank">https://svn-cesm2-expdb.cgd.ucar.edu/public/[% exp.casename %]</a></td>
+			  -->
+			  <td>Coming soon</td>
                         </tr>
                       </tbody>
                     </table>
