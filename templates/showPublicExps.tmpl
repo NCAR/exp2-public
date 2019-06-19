@@ -1,376 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">	
+<head>
+    <meta charset="utf-8">
     <title>CESM2 Scientifically Validated Configurations</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="cache-control" content="max-age=0" />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="expires" content="0" />
-    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta name="description" content="CESM2 Scientifically Validated Configurations"/>
-    <meta name="keywords"    content="CESM Software Engineering Working Group"/>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Multi-decadal model runs of given component sets at the target resolution, followed by scientific review of the model output diagnostics" />
 
-    <style type="text/css" media="screen">
-      /*@import "/styles/cesm.css";
-      @import "/styles/teststyles.css";
-      @import "/svnuser/css/svnuser.css";
-      @import "/jqueryui/development-bundle/demos/demos.css";
-      @import "/jqueryui/css/redmond/jquery-ui-1.8.23.custom.css";
-      @import "/jquerydt/DataTables-1.9.3/media/css/jquery.dataTables.css";*/
+    <!-- css -->
+    [% INCLUDE 'um/css/css-include.html' %]
+
+    <!-- datatables stylesheet includes -->
+    <link href="/includes/um/css/datatables.min.css" rel="stylesheet" />
+
+    <!-- datatables icon stylesheet includes -->
+    <!--<link href="/includes/um/css/datatables.icons.css" rel="stylesheet" />-->
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="/includes/um/js/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <style type="text/css">
+    .dtr-details {
+        width: 100%;
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .dtr-details li {
+        margin-bottom: 20px;
+    }
+
+
+    .dtr-title {
+        font-weight: bold;
+    }
+
+
+    table.dataTable tbody.tbody-timing td {
+    padding: 0px;
+    }
+
+    table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"]:hover {
+        background-color: #dedede;
+        cursor: pointer;
+    }
+
+    table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child::before {
+        height: 14px;
+        width: 14px;
+        border-radius: 14px;
+        line-height: 14px;
+        font-size: 14px !important;
+        color: white;
+        border: 2px solid white;
+        box-shadow: 0 0 3px #444;
+        box-sizing: content-box;
+        text-align: center;
+        text-indent: 0 !important;
+        content: '+';
+        background-color: #337ab7;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child::before {
+        content: '-';
+        background-color: #d33333;
+    }
     </style>
+</head>
 
-    <style>
-      #details { 
-      background-color: #c5edcb; 
-      }
-      #details1 { 
-      background-color: #CCE5FF;
-      }
-      #details2 { 
-      background-color: #FFCCCC;
-      }
-      .alert:hover {
-      cursor: pointer;
-      }
-      table {
-      width: 100%;
-      }
-      .dtr-details {
-      width: 100%;
-      }
-      table.dataTable tbody.tbody-timing td {
-      padding: 0px;
-      }
-      #wrapper {
-      display: block;
-      }
-    </style>
-
-    [% INCLUDE 'modern/css/css-include.html' %]
-    <style>
-      [% INCLUDE 'modern/css/datatables.min.css' %]
-      [% INCLUDE 'modern/skins/default.css' %]
-
-      #inner-headline nav ul.dropdown-menu li a {
-      color:#000;
-      }
-
-      .tab-content {
-      border-left: 1px solid #ddd;
-      border-right: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      }
-
-      .tab-pane {
-      
-      }
-
-      .nav-sub {
-      padding: 10px;
-      background-color: #3E6A9C;
-      }
-
-      .nav-sub > li > a {
-      border-radius: 4px;
-      color: #fff;
-      }
-
-      .nav-sub > li > a:hover {
-      background-color:#fff;
-      color: #000;
-      }
-
-      .tab-pane {
-      /*min-height: 330px;*/
-      }
+<body>
+<div id="wrapper">
+    <!-- navbar include -->
+    [% INCLUDE 'um/includes/header/navbar.html' %]
 
 
-      .panel-group .panel {
-      border-radius: 0px;
-      border-left: 0px;
-      border-right: 0px;
-      }
+    <!-- start breadcrumb menu -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="http://www.cesm.ucar.edu/models/">CESM Models</a></li>
+                            <li class="breadcrumb-item"><a href="http://www.cesm.ucar.edu/models/current.html">CESM Supported Releases</a></li>
+                            <li class="breadcrumb-item"><a href="http://www.cesm.ucar.edu/models/cesm2">CESM2</a></li>
+                            <li class="breadcrumb-item active">CESM2 Scientifically Validated Configurations</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end breadcrumb menu -->
 
-      .panel-group .panel + .panel {
-      margin-top: 0px;
-      }
 
-    </style>
-  </head>
 
-  <body style="">
-    <div id="wrapper">
-      <header>
-	<div class="navbar navbar-default navbar-static-top">
-	  <div class="container">
-	    [% INCLUDE 'modern/includes/header/navbar-header.html' %]
-	    [% INCLUDE 'modern/includes/header/search.html' %]
-	    [% INCLUDE 'modern/includes/header/nsf-header.html' %]
-	    [% INCLUDE 'modern/includes/navigation/models-nav.html' %]
-	  </div>
-	</div>
-      </header>
+    <!-- content start  -->
+    <section id="content">
+        <div class="container">
 
-      <section id="inner-headline">
-	<div class="container">
-	  <div class="row">
-	    <div class="col-lg-12">
-	      <ul class="breadcrumb">
-		<li><a href="http://www.cesm.ucar.edu/index.html"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-		<li><a href="http://www.cesm.ucar.edu/models/">CESM Models</a><i class="icon-angle-right"></i></li>
-		<li><a href="http://www.cesm.ucar.edu/models/cesm2">CESM2</a><i class="icon-angle-right"></i></li>
-		<li class="active">CESM2 Scientifically Validated Configurations</li>
-	      </ul>
-	    </div>
-	  </div>
-	</div>
-      </section>
-
-      <!-- content start  -->
-      <section id="content">
-	<div class="container">
-	  <div class="row visible-sm-block text-center hidden-md hidden-lg"><h3>Not designed for mobile viewing, please open on a desktop</h3></div>
-
-	  <div class="col-lg-12">
-	    <div class="post-image">
-	      <div class="post-heading">
-                <h1>CESM2 Scientifically Validated Configurations</h1>
-	      </div>
+            <div class="d-block d-sm-none">
+                <div class="row">
+                    <div class="col">
+                        <div class="alert alert-danger" role="alert">
+                            Not designed for mobile viewing, please open on a desktop
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="callout-block callout-danger">
-              <div class="content">
-                <h4 class="callout-title"><i class="fa fa-exclamation-triangle"></i> Important</h4>
-                <p>You should use the most recent supported version 
-		  (<a href="http://www.cesm.ucar.edu/models/cesm2/release_download.html">release-cesm2.1.1</a>) of the
-                  model that is available unless you are trying to replicate
-                  previous results or create a branch run from a previous
-                  experiment. </p>
-              </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="post-image">
+                        <div class="post-heading">
+                            <h1>CESM2 Scientifically Validated Configurations</h1>
+                        </div>
+                    </div>
+
+                    <div class="callout-block callout-danger mb-5">
+                        <div class="icon-holder">
+                            <i class="fa fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="content">
+                            <h4 class="callout-title">Important</h4>
+                            <p>You should use the most recent version of the
+                                model that is available unless you are trying to replicate
+                                previous results or create a branch run from a previous
+                            experiment.</p>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <p>Scientific validation of CESM consists of a multi-decadal model run of the given component set at the target resolution, followed by scientific review of the model output diagnostics. All scientifically supported component sets are also accompanied by diagnostic and model output data.</p>
+
+                        <p>Component sets and resolutions are backward compatible with all CESM releases. However, newer releases of CESM allow for additional compsets, resolutions and machines.</p>
+
+                        <p>The <a href="http://bb.cgd.ucar.edu">DiscussCESM Forums</a> bulletin board can also provide specific recommendations from the CESM community regarding which release of the model to use for your specific requirements.</p>
+                    </div>
+                </div>
             </div>
 
-            <p>Scientific validation of CESM consists of a
-              multi-decadal model run of the given component set at
-              the target resolution, followed by scientific review of
-              the model output diagnostics. All scientifically
-              supported component sets are also accompanied
-              by diagnostic and model output data.</p>
 
-            <p>Component sets and resolutions are backward
-              compatible with all CESM releases. However,
-              newer releases of CESM allow for
-              additional compsets, resolutions and
-              machines.</p>
+            <!-- wrapper for the loading gif hide/show on page load start -->
+            <div class="loading-gif">
+                <div class="row">
+                    <div class="col">
+                        <div class="bg-white text-center rounded mt-3 pb-4">
+                            <img src="/images/earth-orbit.gif">
+                            <h2>Loading...</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- wrapper for the loading gif hide/show on page load end -->
 
-            <p>The <a href="http://bb.cgd.ucar.edu">DiscussCESM
-		Forums</a> bulletin board can also provide specific
-              recommendations from the CESM community regarding which
-              release of the model to use for your specific
-              requirements.</p>
 
-	    <!-- overall experiment status start -->
-	    <div class="row" style="margin-bottom: 10px;">
-	      <div class="col-lg-12 text-center" style="padding-top: 10px;">
-		<button type="button" class="btn btn-default btn-sm" id="statusBtn-show-all-children">
-		  <i class="fa fa-folder-open"></i> Show All
-		</button>
-		  
-		<button type="button" class="btn btn-default btn-sm" id="statusBtn-hide-all-children">
-		  <i class="fa fa-folder-open"></i> Hide All
-		</button>
-	      </div>
-	    </div>
 
-	    <table id="statusTable" class="table table-striped table-condensed display wrap" style="width: 100%;">
-	      <thead>
-		<tr>
-		  <th>Casename</th>
-		  <th>Ensemble Size</th>
-		  <th>Simulation Type</th>
-		  <th>Model Version</th>
-		  <th class="none">Title</th>
-		  <th class="none">Data Set Availability</th>
-		  <th class="none">Diagnostics Plot Sets</th>
-		  <th class="none">Details</th>
-		</tr>
-	      </thead>
+            <!-- wrapper for the table to hide/show on page load start -->
+            <div class="hide-me">
+                <!-- buttons to show/hide all row -->
+                <div class="row" >
+                    <div class="col text-center">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary" id="statusBtn-show-all-children">
+                                <i class="fa fa-folder-open"></i> Show All
+                            </button>
+                            <button type="button" class="btn btn-primary" id="statusBtn-hide-all-children">
+                                <i class="fa fa-folder-open"></i> Hide All
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-	      <!--- add the CESM2.0.0 experiments manually here first -->
-
-	      <tbody>
-		[% FOREACH exp IN exps %]
-		<tr>
-		  <td>[% exp.casename %]</td>
-		  <td>[% exp.ensemble_size %]</td>
-		  <td>[% exp.expType_desc %]</td>
-		  <td><a href="https://github.com/ESCOMP/cesm/releases/tag/[% exp.model_version %]">[% exp.model_version %]</a></td>
-		  <td style="white-space:normal;">[% exp.title %]</td>
-
-		  <!-- Dataset access -->
-		  <td>
-		    <table class="table table-condensed table-striped small" width="100%">
-		      <thead>
-                        <tr id="details">
-                          <th style="width: 25%">Access Type</th>
-                          <th style="width: 75%">URL or Path</th>
+                <table id="statusTable" class="table table-striped table-sm bg-white" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Casename</th>
+                            <th>Ensemble Size</th>
+                            <th>Simulation Type</th>
+                            <th>Model Version</th>
+                            <th class="none">Title</th>
+                            <th class="none">Data Set Availability</th>
+                            <th class="none">Diagnostics Plot Sets</th>
+                            <th class="none">Details</th>
                         </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th id="details">[% exp.esgf_link_desc %] ([% exp.disk_usage %] Gbytes per ensemble member)</th>
-                          <td><a href="[% exp.esgf_link %]" target="_blank">[% exp.esgf_link %]</a>
-			    [% IF exp.ensemble_size > 1 %]
-			    <p>Ensemble members can be accessed by
-			      incrementing the "i" value in the r*i*p*f* path value
-			      to correspond to the ensemble number</p>
-			    [% END %]
-			  </td>
-			</tr>
+                    </thead>
 
-			[% IF exp.cgd_link_count > 0 %]
+                    <!--- add the CESM2.0.0 experiments manually here first -->
+                    <tbody>
+                        [% FOREACH exp IN exps %]
                         <tr>
-                          <th id="details">[% exp.cdg_link_desc %]</th>
-                          <td><a href="[% exp.cgd_link %]" target="_blank">[% exp.cgd_link %]</a></td>
-			</tr>
-			[% END %]
-                        <tr>
-                          <th id="details">NCAR users<br/>CMIP6 CESM2 native single-variable timeseries files</th>
-                          <td>/glade/collections/cdg/timeseries-cmip6/[% exp.casename %]</td>
+                            <td>[% exp.casename %]</td>
+                            <td>[% exp.ensemble_size %]</td>
+                            <td>[% exp.expType_desc %]</td>
+                            <td><a href="https://github.com/ESCOMP/cesm/releases/tag/[% exp.model_version %]" target="_blank">[% exp.model_version %]</a></td>
+                            <td style="white-space:normal;">[% exp.title %]</td>
+
+                            <!-- Dataset access -->
+                            <td>
+                                <table class="table table-sm table-striped text-small" >
+                                    <thead>
+                                        <tr id="details">
+                                            <th>Access Type</th>
+                                            <th>URL or Path</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th id="details">[% exp.esgf_link_desc %] ([% exp.disk_usage %] Gbytes per ensemble member)</th>
+                                            <td><a href="[% exp.esgf_link %]" target="_blank">[% exp.esgf_link %]</a>
+                                                [% IF exp.ensemble_size > 1 %]
+                                                <p>Ensemble members can be accessed by
+                                                    incrementing the "r" value in the r*i*p*f* path value
+                                                to correspond to the ensemble number</p>
+                                                [% END %]
+                                            </td>
+                                        </tr>
+
+                                        [% IF exp.cgd_link_count > 0 %]
+                                        <tr>
+                                            <th id="details">[% exp.cdg_link_desc %]</th>
+                                            <td><a href="[% exp.cgd_link %]" target="_blank">[% exp.cgd_link %]</a></td>
+                                        </tr>
+                                        [% END %]
+                                        <tr>
+                                            <th id="details">NCAR users<br/>CMIP6 CESM2 native single-variable timeseries files</th>
+                                            <td>/glade/collections/cdg/timeseries-cmip6/[% exp.casename %]</td>
+                                        </tr>
+                                        <tr>
+                                            <th id="details">Caseroot files</th>
+					    <!--
+                                            <td><a href="https://svn-cesm2-expdb.cgd.ucar.edu/public/[% exp.casename %]" target="_blank">https://svn-cesm2-expdb.cgd.ucar.edu/public/[% exp.casename %]</a></td>
+					    !-->
+					    <td>Coming soon</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+
+                            <!-- Diagnostics plot links -->
+                            <td>
+                                <table class="table table-sm table-striped text-small" >
+                                    <tbody>
+                                        [% FOREACH diag IN exp.diags %]
+                                        <tr>
+                                            <th id="details1" colspan="2">[% diag.process %] ([% diag.last_update %])</th>
+                                        </tr>
+                                        <tr>
+                                            <th id="details1">Description</th>
+                                            <td>[% diag.description %]</td>
+                                        </tr>
+                                        <tr>
+                                            <th id="details1">Link</th>
+                                            <td><a target="_blank" href="[% diag.link %]">[% diag.link %]</a></td>
+                                        </tr>
+                                        [% END %]
+                                    </tbody>
+                                </table>
+                            </td>
+
+                            <!-- Case details -->
+                            <td>
+                                <table class="table table-sm table-striped text-small" >
+                                    <thead>
+                                        <tr id="details2">
+                                            <th>Case Field Name</th>		
+                                            <th>Field Value</th>		
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th id="details2">Case ID</th>
+                                            <td>[% exp.case_id %]</td>
+                                        </tr>
+                                        <tr>
+                                            <th id="details2">Case Name</th>
+                                            <td>[% exp.casename %]</td>
+                                        </tr>
+                                        <tr>
+                                            <th id="details2">Component Set</th>
+                                            <td><a target="_blank" href="http://www.cesm.ucar.edu/models/cesm2/config/compsets.html">[% exp.compset %]</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th id="details2">Grid Resolution</th>
+                                            <td><a target="_blank" href="http://www.cesm.ucar.edu/models/cesm2/config/grids.html">[% exp.grid %]</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th id="details2">Machine:compiler:mpilib</th>
+                                            <td><a target="_blank" href="http://www.cesm.ucar.edu/models/cesm2/config/machines.html">[% exp.machine %]:[% exp.compiler %]:[% exp.mpilib %]</a></td>
+                                            <tr>
+                                                <th id="details2">Last Update</th>
+                                                <td>[% exp.last_update %]</td>
+                                            </tr>
+                                            [% IF exp.expType_id == 1 %]
+                                            <tr>
+                                                <th id="details2">CMIP6 Experiment</th>
+                                                <td><a target="_blank" href="http://clipc-services.ceda.ac.uk/dreq/u/[% exp.cmip6_uid %].html">[% exp.cmip6_name %]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <th id="details2">CMIP6 Experiment Description</th>
+                                                <td>[% exp.cmip6_desc %]</td>
+                                            </tr>
+                                        </tr>
+                                        [% END %]
+                                    </tbody>
+                                </table>
+                            </td>
                         </tr>
+                        [% END %]
+                    </tbody>
+
+                    <tfoot>
                         <tr>
-                          <th id="details">Caseroot files</th>
-			  <!--
-                          <td><a href="https://svn-cesm2-expdb.cgd.ucar.edu/public/[% exp.casename %]" target="_blank">https://svn-cesm2-expdb.cgd.ucar.edu/public/[% exp.casename %]</a></td>
-			  -->
-			  <td>Coming soon</td>
+                          <th>Casename</th>
+                          <th>Ensemble Size</th>
+                          <th>Simulation Type</th>
+                          <th>Model Version</th>
+                          <th class="none">Title</th>
+                          <th class="none">Data Set Availability</th>
+                          <th class="none">Diagnostics Plot Sets</th>
+                          <th class="none">Details</th>
                         </tr>
-                      </tbody>
-                    </table>
-		  </td>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- wrapper for the table to hide/show on page load end -->
 
-		  <!-- Diagnostics plot links -->
-		  <td>
-		    <table class="table table-condensed table-striped small" width="100%">
-		      <tbody>
-			[% FOREACH diag IN exp.diags %]
-			<tr>
-			  <th id="details1" colspan="2">[% diag.process %] ([% diag.last_update %])</th>
-			</tr>
-			<tr>
-			  <th id="details1">Description</th>
-			  <td>[% diag.description %]</td>
-			</tr>
-			<tr>
-			  <th id="details1">Link</th>
-			  <td><a target="_blank" href="[% diag.link %]">[% diag.link %]</a></td>
-			</tr>
-			[% END %]
-		      </tbody>
-		    </table>
-		  </td>
+        </div>
+    </section>
 
-		  <!-- Case details -->
-		  <td>
-		    <table class="table table-condensed table-striped small" width="100%">
-		      <thead>
-			<tr id="details2">
-			  <th style="width: 25%">Case Field Name</th>		
-			  <th style="width: 75%">Field Value</th>		
-			</tr>
-		      </thead>
-		      <tbody>
-			<tr>
-			  <th id="details2">Case ID</th>
-			  <td>[% exp.case_id %]</td>
-			</tr>
-			<tr>
-			  <th id="details2">Case Name</th>
-			  <td>[% exp.casename %]</td>
-			</tr>
-			<tr>
-			  <th id="details2">Component Set</th>
-			  <td><a target="_blank" href="http://www.cesm.ucar.edu/models/cesm2/config/compsets.html">[% exp.compset %]</a></td>
-			</tr>
-			<tr>
-			  <th id="details2">Grid Resolution</th>
-			  <td><a target="_blank" href="http://www.cesm.ucar.edu/models/cesm2/config/grids.html">[% exp.grid %]</a></td>
-			</tr>
-			<tr>
-			  <th id="details2">Machine:compiler:mpilib</th>
-			  <td><a target="_blank" href="http://www.cesm.ucar.edu/models/cesm2/config/machines.html">[% exp.machine %]:[% exp.compiler %]:[% exp.mpilib %]</a></td>
-			<tr>
-			  <th id="details2">Last Update</th>
-			  <td>[% exp.last_update %]</td>
-			</tr>
-			[% IF exp.expType_id == 1 %]
-			<tr>
-			  <th id="details2">CMIP6 Experiment</th>
-			  <td><a target="_blank" href="http://clipc-services.ceda.ac.uk/dreq/u/[% exp.cmip6_uid %].html">[% exp.cmip6_name %]</a></td>
-			</tr>
-			<tr>
-			  <th id="details2">CMIP6 Experiment Description</th>
-			  <td>[% exp.cmip6_desc %]</td>
-			</tr>
-			[% END %]
-		      </tbody>
-		    </table>
-		  </td>
-                </tr>
-                [% END %]
-	      </tbody>
 
-	      <tfoot>
-		<tr>
-		  <th>Casename</th>
-		  <th>Ensemble Size</th>
-		  <th>Simulation Type</th>
-		  <th>Model Version</th>
-		  <th class="none">Title</th>
-		  <th class="none">Data Set Availability</th>
-		  <th class="none">Diagnostics Plot Sets</th>
-		  <th class="none">Details</th>
-		</tr>
-	      </tfoot>
-	    </table>
-
-          </div>
-	</div>
-      </section>
-    </div>
-
-    <!-- footer start -->
-    <footer>        
-      [% INCLUDE 'modern/includes/footer/footer-inc.html' %]
+    <footer>
+        <!-- footer include -->
+        [% INCLUDE 'um/includes/footer/footer-inc.html' %]
     </footer>
-    <!-- footer end -->
-
-    <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
-
-    [% INCLUDE 'modern/js/js-include.html' %]
-    
-    <script>
-      [% INCLUDE 'modern/js/datatables.min.js' %]
-
-      var statusTable = $('#statusTable').DataTable({
-      "responsive": true,
-      "lengthMenu": [ [25, 50, -1], [25, 50, "All"] ],
-      "order": [ [ 0, 'asc'] ]
-      });
-
-      // Handle click on "Expand All" button
-      $('button#statusBtn-show-all-children').on('click', function(){
-      // Expand row details
-      statusTable.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
-      });
-
-      // Handle click on "Collapse All" button
-      $('button#statusBtn-hide-all-children').on('click', function(){
-      // Collapse row details
-      statusTable.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
-      });
-    </script>
 </div>
+
+
+<!-- javascript include -->
+[% INCLUDE 'um/js/js-include.html' %]
+
+<!-- datatables js includes -->
+<script src="/includes/um/js/datatables.min.js"></script>
+
+<!-- custom js scripts -->
+<script>
+    // before the page has been loaded
+    $(document).ready(function() {
+        var statusTable = $('#statusTable').DataTable({
+            "responsive": true,
+            "lengthMenu": [ [25, 50, -1], [25, 50, "All"] ],
+            "order": [ [ 0, 'asc'] ]
+        });
+
+        // Handle click on "Expand All" button
+        $('button#statusBtn-show-all-children').on('click', function(){
+            // Expand row details
+            statusTable.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
+        });
+
+        // Handle click on "Collapse All" button
+        $('button#statusBtn-hide-all-children').on('click', function(){
+            // Collapse row details
+            statusTable.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
+        });
+    });
+
+
+    // once the window has been loaded start the timers
+    $(window).on('load', function() {
+        // fade out the loading gif
+        $(".loading-gif").fadeOut("slow",function() {
+            // once the loading gif is out fade in the table
+            $(".hide-me").fadeIn("fast");
+        });
+    });
+</script>
 </body>
 </html>
